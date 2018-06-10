@@ -303,7 +303,7 @@
       
         
           <p>使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。</p>
-<h1 id="1原始-dao开发问题"><a href="#1原始-dao开发问题" class="headerlink" title="1原始 dao开发问题"></a>1原始 dao开发问题</h1><ol>
+<h2 id="1原始-dao开发问题"><a href="#1原始-dao开发问题" class="headerlink" title="1原始 dao开发问题"></a>1原始 dao开发问题</h2><ol>
 <li>dao接口实现类方法中存在大量模板方法，设想能否将这些代码提取出来，大大减轻程序员的工作量。</li>
 <li>调用sqlsession方法时将statement的id硬编码了</li>
 <li>调用sqlsession方法时传入的变量，由于sqlsession方法使用泛型，即使变量类型传入错误，在编译阶段也不报错，不利于程序员开发。
