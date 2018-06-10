@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="汪汪">
 <meta property="og:description" content="使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。 1原始 dao开发问题 dao接口实现类方法中存在大量模板方法，设想能否将这些代码提取出来，大大减轻程序员的工作量。 调用sqlsession方法时将statement的id硬编码了 调用sqlsession方法时传入的变量，由于sqlsession方法使用泛型，即使变量">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-10T14:10:04.501Z">
+<meta property="og:updated_time" content="2018-06-10T14:15:07.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mapper动态代理">
 <meta name="twitter:description" content="使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。 1原始 dao开发问题 dao接口实现类方法中存在大量模板方法，设想能否将这些代码提取出来，大大减轻程序员的工作量。 调用sqlsession方法时将statement的id硬编码了 调用sqlsession方法时传入的变量，由于sqlsession方法使用泛型，即使变量">
@@ -300,13 +300,12 @@
 
       
         <p>使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。</p>
-<h2 id="1原始-dao开发问题"><a href="#1原始-dao开发问题" class="headerlink" title="1原始 dao开发问题"></a>1原始 dao开发问题</h2><ol>
+<h1 id="1原始-dao开发问题"><a href="#1原始-dao开发问题" class="headerlink" title="1原始 dao开发问题"></a>1原始 dao开发问题</h1><ol>
 <li>dao接口实现类方法中存在大量模板方法，设想能否将这些代码提取出来，大大减轻程序员的工作量。</li>
 <li>调用sqlsession方法时将statement的id硬编码了</li>
-<li>调用sqlsession方法时传入的变量，由于sqlsession方法使用泛型，即使变量类型传入错误，在编译阶段也不报错，不利于程序员开发。</li>
+<li>调用sqlsession方法时传入的变量，由于sqlsession方法使用泛型，即使变量类型传入错误，在编译阶段也不报错，不利于程序员开发。<a id="more"></a> </li>
 </ol>
-<a id="more"></a> 
-<h2 id="2Mapper代理"><a href="#2Mapper代理" class="headerlink" title="2Mapper代理"></a>2Mapper代理</h2><p>Mapper接口开发方法只需要程序员编写Mapper接口（相当于Dao接口），由Mybatis框架根据接口定义创建接口的动态代理对象，代理对象的方法体同上边Dao接口实现类方法。</p>
+<h1 id="2Mapper代理"><a href="#2Mapper代理" class="headerlink" title="2Mapper代理"></a>2Mapper代理</h1><p>Mapper接口开发方法只需要程序员编写Mapper接口（相当于Dao接口），由Mybatis框架根据接口定义创建接口的动态代理对象，代理对象的方法体同上边Dao接口实现类方法。</p>
 <p>代理实例</p>
 <p>UserMapper.xml（名称建议与接口名称一致）</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"cn.wanghang.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 在映射文件中配置很多的sql语句 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 根据id查询用户表的记录</span></span><br><span class="line"><span class="comment">		id:标识sql</span></span><br><span class="line"><span class="comment">		parameterType:指定输入的参数类型</span></span><br><span class="line"><span class="comment">		resultMap:输出结果所映射成的pojo</span></span><br><span class="line"><span class="comment">		#&#123;id&#125;,这里的id的名称可以任意</span></span><br><span class="line"><span class="comment">	 --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"cn.wanghang.po.User"</span>&gt;</span></span><br><span class="line">		SELECT * FROM USER WHERE id=#&#123;id&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span> </span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -505,7 +504,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1原始-dao开发问题"><span class="nav-number">1.</span> <span class="nav-text">1原始 dao开发问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2Mapper代理"><span class="nav-number">2.</span> <span class="nav-text">2Mapper代理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1原始-dao开发问题"><span class="nav-number">1.</span> <span class="nav-text">1原始 dao开发问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2Mapper代理"><span class="nav-number">2.</span> <span class="nav-text">2Mapper代理</span></a></li></ol></div>
             
 
           </div>
