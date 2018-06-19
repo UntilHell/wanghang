@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/wanghang/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/wanghang/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/wanghang/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/wanghang/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/wanghang/images/favicon32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/wanghang/images/favicon16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/wanghang/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="管理系统到了最后，加油">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试2">
+<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/14/java面试2/index.html">
+<meta property="og:site_name" content="汪汪的blog">
+<meta property="og:description" content="管理系统到了最后，加油">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/Users/Administrator/Desktop/1.png">
+<meta property="og:updated_time" content="2018-06-15T13:17:22.335Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试2">
+<meta name="twitter:description" content="管理系统到了最后，加油">
+<meta name="twitter:image" content="c:/Users/Administrator/Desktop/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/wanghang/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/14/java面试2/"/>
+
+
+
+
+
+  <title>面试2 | 汪汪的blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+	<a href="https://github.com/UntilHell"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/wanghang/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">汪汪的blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">汝之优秀，吾何时能及！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/wanghang/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/wanghang/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/wanghang/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/wanghang/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/14/java面试2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蟑螂恶霸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/wanghang/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汪汪的blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-14T19:39:43+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,157
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>管理系统到了最后，加油</p>
+<a id="more"></a> 
+<h1 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h1><ol>
+<li><p>放入值栈和context域中的区别，值栈中是怎么取值的？</p>
+<p>使用push单个对象，set往值栈里放值</p>
+<p>使用el表达式</p>
+</li>
+<li><p>struts.xml中的package、namespace的意思？</p>
+<ul>
+<li>name属性值根功能本身没有关系的，</li>
+<li>在一个配置文件中可以写多个package标签，name属性值不能相同的</li>
+<li>namespace属性值和action标签里面的name属性值构成访问路径 </li>
+</ul>
+</li>
+<li><p>${pageContext.request.contextPath}的定位应该是webapp下面？</p>
+<p>是</p>
+</li>
+<li><p>left join，统计在线人数，sql?</p>
+<p>oracle</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.a1,nvl(b.c1,<span class="number">0</span>) </span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">（<span class="keyword">SELECT</span> * <span class="keyword">from</span> online_info_t）a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> (</span><br><span class="line">  <span class="keyword">select</span> to_char(login_time, <span class="string">'hh24'</span>) a1,<span class="keyword">count</span>(*) c1 <span class="keyword">from</span> login_log_p <span class="keyword">GROUP</span> <span class="keyword">BY</span> to_char(login_time, <span class="string">'hh24'</span>) <span class="keyword">ORDER</span> <span class="keyword">by</span> a1) b</span><br><span class="line"> <span class="keyword">on</span> (a.a1=b.a1) </span><br><span class="line"> <span class="keyword">order</span> <span class="keyword">by</span> a.a1</span><br></pre></td></tr></table></figure>
+<p>左连接，左边的全部显示，记住这个例子</p>
+<p>nvl函数，为空的都显示0</p>
+</li>
+<li><p>管理系统中json转换前面没怎么用，都是手动拼接，但是淘淘商城中用转换用的很多，为什么？</p>
+<p>淘淘商城中ssm架构，使用SpringMvc的@responsebody注解将对象转换为json</p>
+</li>
+<li><p>ajax不能实现跨域，jsonP是怎么跨域的？</p>
+</li>
+</ol>
+<h1 id="电子报运功能"><a href="#电子报运功能" class="headerlink" title="电子报运功能"></a>电子报运功能</h1><p>模拟海关报运平台，使用webservice远程调用报运服务。远程的报运平台接收json字符串，然后返回json串。接收的json串格式如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">一.请求海关报运平台的数据结构分析(不支持批量报运)</span><br><span class="line">&#123;</span><br><span class="line"> exportId:"",</span><br><span class="line"> inputDate:"",</span><br><span class="line"> shipmentPort:"",</span><br><span class="line"> destinationPort:"",</span><br><span class="line"> transportMode:"",</span><br><span class="line"> priceCondition:"",</span><br><span class="line"> boxNums:"",</span><br><span class="line"> grossWeights:"",</span><br><span class="line"> measurements:"",</span><br><span class="line"> products:[</span><br><span class="line">            &#123;</span><br><span class="line">               exportProductId:"",</span><br><span class="line">	       productNo:"",</span><br><span class="line">	       packingUnit:"",</span><br><span class="line">	       cnumber:"",</span><br><span class="line">	       boxNum:"",</span><br><span class="line">	       grossWeight:"",</span><br><span class="line">	       netWeight:"",</span><br><span class="line">	       sizeLength:"",</span><br><span class="line">               sizeWidth:"",</span><br><span class="line">               sizeHeight:"",</span><br><span class="line">               exPrice:"",</span><br><span class="line">               price:"",</span><br><span class="line">               tax:""</span><br><span class="line">            &#125;,</span><br><span class="line">	   &#123;</span><br><span class="line">               exportProductId:"",</span><br><span class="line">	       productNo:"",</span><br><span class="line">	       packingUnit:"",</span><br><span class="line">	       cnumber:"",</span><br><span class="line">	       boxNum:"",</span><br><span class="line">	       grossWeight:"",</span><br><span class="line">	       netWeight:"",</span><br><span class="line">	       sizeLength:"",</span><br><span class="line">               sizeWidth:"",</span><br><span class="line">               sizeHeight:"",</span><br><span class="line">               exPrice:"",</span><br><span class="line">               price:"",</span><br><span class="line">               tax:""</span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>确定选择的报运单对象</p>
+<p>Export export = exportService.get(Export.class, model.getId());        </p>
+</li>
+<li><p>转json</p>
+<p>String json = JSON.toJSON(export);</p>
+<p>转换过程中的问题：Export中的字段与接收的json字符串不符合，所以应该让这些字符不转；还有一个名字   需要一致，这里用到两个fastjson里的注解，改名称（@JSONField(name=”exportProductId”)），不转换（@JSONField(serialize=false)）。</p>
+<p>String json = JSON.toJSONString(export);</p>
+<p>得到的转换结果</p>
+<p><img src="C:\Users\Administrator\Desktop\1.png" alt="1"></p>
+</li>
+<li><p>调用远程的webservice服务，将json传给海关保运平台</p>
+<p>新建一个applicationContext-cfg.xml文件，加入如下代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:cxf</span>=<span class="string">"http://cxf.apache.org/core"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:jaxws</span>=<span class="string">"http://cxf.apache.org/jaxws"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:jaxrs</span>=<span class="string">"http://cxf.apache.org/jaxrs"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans </span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://cxf.apache.org/core</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://cxf.apache.org/schemas/core.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://cxf.apache.org/jaxws</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://cxf.apache.org/schemas/jaxws.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://cxf.apache.org/jaxrs</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://cxf.apache.org/schemas/jaxrs.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        "</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">description</span>&gt;</span>cxf与spring的配置文件<span class="tag">&lt;/<span class="name">description</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">jaxrs:client</span> <span class="attr">id</span>=<span class="string">"epService"</span> <span class="attr">address</span>=<span class="string">"http://localhost:8080/jk_export/ws/export?wsdl"</span> <span class="attr">serviceClass</span>=<span class="string">"cn.itcast.export.webservice.EpService"</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">jaxrs:client</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>打开cmd，定为src目录，实现如下代码：</p>
+<p>wsimport -s . <a href="http://localhost:8080/jk_export/ws/export?wsdl" target="_blank" rel="noopener">http://localhost:8080/jk_export/ws/export?wsdl</a></p>
+</li>
+<li><p>处理响应结果</p>
+<p>响应回来的json字符串用json解析，转换为export对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Export exportResult = JSON.parseObject(exportE, Export.class);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> exportId:&quot;&quot;,</span><br><span class="line"> state:&quot;&quot;,</span><br><span class="line"> remark:&quot;&quot;,</span><br><span class="line"> products:[</span><br><span class="line">            &#123;</span><br><span class="line">               exportProductId:&quot;&quot;,</span><br><span class="line">               tax:&quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">	   &#123;</span><br><span class="line">               exportProductId:&quot;&quot;,</span><br><span class="line">               tax:&quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还需要在service中加入saveorupdate方法，从上面的json可以看到，还需要在product中设置tax，需要查出来，在进行设置。</p>
+<p><strong>查出来，进行设置</strong></p>
+</li>
+<li><p>返回list</p>
+</li>
+</ol>
+<h1 id="freemark和codemachine"><a href="#freemark和codemachine" class="headerlink" title="freemark和codemachine"></a>freemark和codemachine</h1><p>代码生成器，目前还用不到，先写会再说</p>
+<p>…………………………………………………………</p>
+<p>以后再补</p>
+<h1 id="今天碰到的bug"><a href="#今天碰到的bug" class="headerlink" title="今天碰到的bug"></a>今天碰到的bug</h1><ol>
+<li><p>有一个问题浪费时间，郁闷</p>
+<p>直接从老师那里考的项目，改了源代码却没有重新编译，导致一直连不上后面发现他是改为只读，read-only,而且编译器版本和我的不一样。改好了</p>
+</li>
+<li><p>sb问题</p>
+</li>
+</ol>
+<p>​    org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Failed to import bean definitions from URL location [classpath:applicationContext-cxf.xml]</p>
+<p>下面的文件写错了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean&gt;&lt;/bean&gt;</span><br><span class="line">	&lt;jaxrs:client id=&quot;epService&quot; address=&quot;http://localhost:8080/jk_export/ws/export?wsdl&quot; serviceClass=&quot;cn.itcast.export.webservice.EpService&quot;&gt;	</span><br><span class="line">	&lt;/jaxrs:client&gt;</span><br></pre></td></tr></table></figure>
+<p>另外一个两难的问题：</p>
+<p>我想把管理系统部署在阿里云的服务器上，jdk+mysql+tomcat都装好了，但是管理系统的数据库是oracle的，oracle的安装极其麻烦，在阿里云的服务器上安装oracle，步骤超过20步，还要设置配置文件。改造数据库的文件和源代码，把数据移到mysql上，需要改sql文件，这点做不到或者说没有掌握，另外代码也要修改，需要调试。</p>
+<p>两难…………………………………</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/wanghang/2018/06/14/webservice/" rel="next" title="webservice">
+                <i class="fa fa-chevron-left"></i> webservice
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">蟑螂恶霸</p>
+              <p class="site-description motion-element" itemprop="description">继续努力</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/wanghang/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/wanghang/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#几个问题"><span class="nav-number">1.</span> <span class="nav-text">几个问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#电子报运功能"><span class="nav-number">2.</span> <span class="nav-text">电子报运功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#freemark和codemachine"><span class="nav-number">3.</span> <span class="nav-text">freemark和codemachine</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#今天碰到的bug"><span class="nav-number">4.</span> <span class="nav-text">今天碰到的bug</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蟑螂恶霸</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共6.0k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/wanghang/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/wanghang/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/wanghang/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
