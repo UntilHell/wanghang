@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java" />
+  <meta name="keywords" content="阿里云," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。">
+<meta name="description" content="每天把自己要做的事情写下来，完成！6.21和6.22两天的东西写在一起，因为6.21忙于其他的事情，没有时间。">
+<meta name="keywords" content="阿里云">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mapper动态代理">
-<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/10/Mapper动态代理/index.html">
+<meta property="og:title" content="管理系统部署到阿里云">
+<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/20/java面试4/index.html">
 <meta property="og:site_name" content="汪汪的blog">
-<meta property="og:description" content="使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。">
+<meta property="og:description" content="每天把自己要做的事情写下来，完成！6.21和6.22两天的东西写在一起，因为6.21忙于其他的事情，没有时间。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-11T01:15:30.025Z">
+<meta property="og:updated_time" content="2018-06-23T02:53:32.513Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mapper动态代理">
-<meta name="twitter:description" content="使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。">
+<meta name="twitter:title" content="管理系统部署到阿里云">
+<meta name="twitter:description" content="每天把自己要做的事情写下来，完成！6.21和6.22两天的东西写在一起，因为6.21忙于其他的事情，没有时间。">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/10/Mapper动态代理/"/>
+  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/20/java面试4/"/>
 
 
 
 
 
-  <title>Mapper动态代理 | 汪汪的blog</title>
+  <title>管理系统部署到阿里云 | 汪汪的blog</title>
   
 
 
@@ -254,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/10/Mapper动态代理/">
+    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/20/java面试4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="蟑螂恶霸">
@@ -271,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mapper动态代理</h1>
+          <h1 class="post-title" itemprop="name headline">管理系统部署到阿里云</h1>
         
 
         <div class="post-meta">
@@ -283,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T21:49:06+08:00">
-                2018-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-20T17:06:41+08:00">
+                2018-06-20
               </time>
             
 
@@ -315,7 +316,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  696
+                  705
                 </span>
               
 
@@ -352,69 +353,62 @@
       
 
       
-        <p>使用MyBatis开发Dao，通常有两个方法，即原始Dao开发方法和Mapper接口开发方法，原始的方法见MyBatis入门。</p>
-<a id="more"></a> 
-<h2 id="原始-dao开发问题"><a href="#原始-dao开发问题" class="headerlink" title="原始 dao开发问题"></a>原始 dao开发问题</h2><ol>
-<li><p>dao接口实现类方法中存在大量模板方法，设想能否将这些代码提取出来，大大减轻程序员的工作量。</p>
-</li>
-<li><p>调用sqlsession方法时将statement的id硬编码了</p>
-</li>
-<li><p>调用sqlsession方法时传入的变量，由于sqlsession方法使用泛型，即使变量类型传入错误，在编译阶段也不报错，不利于程序员开发。</p>
+        <p>每天把自己要做的事情写下来，完成！<br>6.21和6.22两天的东西写在一起，因为6.21忙于其他的事情，没有时间。<br><a id="more"></a></p>
+<p>昨天晚上回去之前把node.js换了一个版本后，成功将简历生成，nice！这个工具的创建者还是个妹子，他的简历真的是太厉害了，很佩服。</p>
+<h1 id="今天的任务"><a href="#今天的任务" class="headerlink" title="今天的任务"></a>今天的任务</h1><ol>
+<li><p>阿里云服务器项目跑起来，将原来的oracle数据库改为mysql。阿里云的服务器安装oracle操作不来</p>
+<p> 下载Navicat premium连接oracle后，工具-数据传输-连接到mysql上，数据转换完成，将mysql的表结构和数据库导出即可。</p>
+<p> Navicat 远程连接阿里云上的mysql数据库。</p>
+<p> 1.开放3306端口</p>
+<p> 2.权限组的配置</p>
+<p> 3.看mysql是否启动，进入命令行修改权限 </p>
+<pre><code>ps -ef | grep mysqld --pid
+
+登录到mysql
+mysql -uroot -p
+怎么进入mysql的命令行确实是个问题
+在/bin目录
+mysql -uroot -p
+Abc123!_
+
+开启远程
+
+grant all privileges on *.* to &apos;root&apos;@&apos;%&apos; identified by &apos;Abc123!_&apos;; 
+flush privileges;
+
+安装mysql的时候其安装路径不清楚，花了很长时间去找mysql 的安装路径。在./sbin目录下。
+</code></pre></li>
+</ol>
+<ol start="2">
+<li><p>将oracle的数据库的SQL改装为mysql需要花费时间，项目的源代码也需要改。</p>
+<p> 真正操作的时候，数据库的迁移和源代码的修改很快做完，远程连接数据库用了一个小时。分为数据库的连接和ssh连接，密码很多，幸好我原来把密码都记在了电脑上。</p>
 </li>
 </ol>
-<h2 id="Mapper代理"><a href="#Mapper代理" class="headerlink" title="Mapper代理"></a>Mapper代理</h2><p>Mapper接口开发方法只需要程序员编写Mapper接口（相当于Dao接口），由Mybatis框架根据接口定义创建接口的动态代理对象，代理对象的方法体同上边Dao接口实现类方法。</p>
-<p>代理实例</p>
-<p>UserMapper.xml（名称建议与接口名称一致）</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"cn.wanghang.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 在映射文件中配置很多的sql语句 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 根据id查询用户表的记录</span></span><br><span class="line"><span class="comment">		id:标识sql</span></span><br><span class="line"><span class="comment">		parameterType:指定输入的参数类型</span></span><br><span class="line"><span class="comment">		resultMap:输出结果所映射成的pojo</span></span><br><span class="line"><span class="comment">		#&#123;id&#125;,这里的id的名称可以任意</span></span><br><span class="line"><span class="comment">	 --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"cn.wanghang.po.User"</span>&gt;</span></span><br><span class="line">		SELECT * FROM USER WHERE id=#&#123;id&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span> </span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>接口UserMapper.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.wanghang.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.wanghang.po.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//根据id查询user</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">findUserById</span><span class="params">(<span class="keyword">int</span> id)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到上面的例子中遵守如下约定</p>
-<ol>
-<li>namespace的值是mapper接口的类路径名；</li>
-<li>mapper.java接口中的方法名和mapper.xml中statement的id一致；</li>
-<li>mapper.java接口中的方法输入参数类型和mapper.xml中statement的parameterType指定的类型一致;</li>
-<li>mapper.java接口中的方法返回值类型和mapper.xml中statement的resultType指定的类型一致;</li>
+<h1 id="思考的问题"><a href="#思考的问题" class="headerlink" title="思考的问题"></a>思考的问题</h1><ol>
+<li><p>ssh中怎么实例化entity</p>
+</li>
+<li><p>hibernate中的一对一、一对多、多对一、多对多；主键的增长方式；级联<br>用户与用户信息User-UserInfo，一对一，单向关联</p>
+</li>
 </ol>
-<p>改变硬编码</p>
-<p>SqlMapConfig.xml可以引用java属性文件中的配置信息如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8</span><br><span class="line">jdbc.username=root</span><br><span class="line">jdbc.password=root</span><br></pre></td></tr></table></figure>
-<p>SqlMapConfig.xml引用如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">"db.properties"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driver&#125;"</span>/&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.url&#125;"</span>/&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.username&#125;"</span>/&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>别名typeAliases</p>
-<p>mybatis支持别名，列举部分</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">别名</th>
-<th style="text-align:center">映射的类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">_byte</td>
-<td style="text-align:center">byte</td>
-</tr>
-<tr>
-<td style="text-align:center">_long</td>
-<td style="text-align:center">long</td>
-</tr>
-<tr>
-<td style="text-align:center">_short</td>
-<td style="text-align:center">short</td>
-</tr>
-<tr>
-<td style="text-align:center">_int</td>
-<td style="text-align:center">int</td>
-</tr>
-<tr>
-<td style="text-align:center">_integer</td>
-<td style="text-align:center">int</td>
-</tr>
-</tbody>
-</table>
-<p>自定义别名</p>
-<p>在SqlMapConfig.xml中配置：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 单个别名定义 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">alias</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"cn.itcast.mybatis.po.User"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 批量别名定义，扫描整个包下的类，别名为类名（首字母大写或小写都可以） --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"cn.itcast.mybatis.po"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"其它包"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="6-22"><a href="#6-22" class="headerlink" title="6.22"></a>6.22</h1><ol>
+<li>tomcat的配置，进入gui界面<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user</span> <span class="attr">username</span>=<span class="string">"tomcat"</span> <span class="attr">password</span>=<span class="string">"s3cret"</span> <span class="attr">roles</span>=<span class="string">"manager-gui"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>进入后的可以直接访问到管理的项目，但是登录不进去，提示密码错误。</p>
+<p>linux下的删除文件命令</p>
+<pre><code>rm 文件名
+rm -rf 目录名
+</code></pre><p>阿里云重启一次tomcat后，需要等很长时间才能访问一次。<br>tail -f catalina.log 查看tomcat的启动日志</p>
+<p>由于java版本的问题，编译的东西没法在阿里云上面运行</p>
+<p>我的失误，当时在阿里云上安装jre和tomcat的时候全部换成8好了，现在折腾半天解决不了。java.lang.NoClassDefFoundError: javax/servlet/ServletContainerInitializer</p>
+<p>在阿里云上安装一个tomcat8<br>mkdir tomcat8</p>
+<p>tar -zxvf …… -C ……..</p>
+<p>tomcat8加入如下的文件</p>
+<p><role rolename="manager"></role></p>
+<p><role rolename="admin"></role></p>
+<p><user username="admin" password="123456" roles="admin,manager"><br>/usr/local/tomcat8/apache-tomcat-8.0.52</user></p>
+<p>两个项目都启动失败，在本地都是成功的。<br>09:30:52,162  INFO C3P0ImplUtils:125 - Failed to get local InetAddress for VMID. This is unlikely to matter. At all. We’ll add some extra randomness<br>java.net.UnknownHostException: izbp1gerwq1eazt9zyg8fiz: izbp1gerwq1eazt9zyg8fiz</p>
+<p>hyycompany成功了</p>
 
       
     </div>
@@ -430,6 +424,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/wanghang/tags/阿里云/" rel="tag"># 阿里云</a>
+          
+        </div>
+      
 
       
       
@@ -439,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/wanghang/2018/06/10/Markdown的尝试/" rel="next" title="Hexo+Markdown尝试">
-                <i class="fa fa-chevron-left"></i> Hexo+Markdown尝试
+              <a href="/wanghang/2018/06/20/java面试3/" rel="next" title="面试3">
+                <i class="fa fa-chevron-left"></i> 面试3
               </a>
             
           </div>
@@ -448,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/wanghang/2018/06/11/阿里云服务器项目的部署/" rel="prev" title="阿里云服务器部署web项目">
-                阿里云服务器部署web项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始-dao开发问题"><span class="nav-number">1.</span> <span class="nav-text">原始 dao开发问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mapper代理"><span class="nav-number">2.</span> <span class="nav-text">Mapper代理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#今天的任务"><span class="nav-number">1.</span> <span class="nav-text">今天的任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思考的问题"><span class="nav-number">2.</span> <span class="nav-text">思考的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-22"><span class="nav-number">3.</span> <span class="nav-text">6.22</span></a></li></ol></div>
             
 
           </div>
