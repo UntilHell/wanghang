@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="汪汪的blog">
 <meta property="og:description" content="每天把自己要做的事情写下来，完成！6.21和6.22两天的东西写在一起，因为6.21忙于其他的事情，没有时间。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-23T02:53:32.513Z">
+<meta property="og:updated_time" content="2018-06-24T13:09:25.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="管理系统部署到阿里云">
 <meta name="twitter:description" content="每天把自己要做的事情写下来，完成！6.21和6.22两天的东西写在一起，因为6.21忙于其他的事情，没有时间。">
@@ -359,9 +359,7 @@
 <li><p>阿里云服务器项目跑起来，将原来的oracle数据库改为mysql。阿里云的服务器安装oracle操作不来</p>
 <p> 下载Navicat premium连接oracle后，工具-数据传输-连接到mysql上，数据转换完成，将mysql的表结构和数据库导出即可。</p>
 <p> Navicat 远程连接阿里云上的mysql数据库。</p>
-<p> 1.开放3306端口</p>
-<p> 2.权限组的配置</p>
-<p> 3.看mysql是否启动，进入命令行修改权限 </p>
+<p> 1.开放3306端口<br> 2.权限组的配置<br> 3.看mysql是否启动，进入命令行修改权限 </p>
 <pre><code>ps -ef | grep mysqld --pid
 
 登录到mysql
@@ -385,10 +383,8 @@ flush privileges;
 </li>
 </ol>
 <h1 id="思考的问题"><a href="#思考的问题" class="headerlink" title="思考的问题"></a>思考的问题</h1><ol>
-<li><p>ssh中怎么实例化entity</p>
-</li>
-<li><p>hibernate中的一对一、一对多、多对一、多对多；主键的增长方式；级联<br>用户与用户信息User-UserInfo，一对一，单向关联</p>
-</li>
+<li>ssh中怎么实例化entity</li>
+<li>hibernate中的一对一、一对多、多对一、多对多；主键的增长方式；级联<br>用户与用户信息User-UserInfo，一对一，单向关联</li>
 </ol>
 <h1 id="6-22"><a href="#6-22" class="headerlink" title="6.22"></a>6.22</h1><ol>
 <li>tomcat的配置，进入gui界面<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user</span> <span class="attr">username</span>=<span class="string">"tomcat"</span> <span class="attr">password</span>=<span class="string">"s3cret"</span> <span class="attr">roles</span>=<span class="string">"manager-gui"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
@@ -448,6 +444,10 @@ rm -rf 目录名
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/wanghang/2018/06/24/java面试5/" rel="prev" title="面试4">
+                面试4 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -562,7 +562,7 @@ rm -rf 目录名
               
                 <a href="/wanghang/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -575,7 +575,7 @@ rm -rf 目录名
               
               <div class="site-state-item site-state-tags">
                 <a href="/wanghang/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -660,7 +660,7 @@ rm -rf 目录名
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共8.4k字</span>
+  <span class="post-count">博客全站共10.4k字</span>
 </div>
         
 
