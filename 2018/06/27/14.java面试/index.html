@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/wanghang/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/wanghang/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/wanghang/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/wanghang/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/wanghang/images/favicon32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/wanghang/images/favicon16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/wanghang/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spring,集合," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="java的学习包括原理学习和工具的学习。原理的学习需要理解，背诵。工具的学习照着视频，步骤，会用就行。继续整理java面试大全里的题目，集合">
+<meta name="keywords" content="Spring,集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试">
+<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/27/14.java面试/index.html">
+<meta property="og:site_name" content="汪汪的blog">
+<meta property="og:description" content="java的学习包括原理学习和工具的学习。原理的学习需要理解，背诵。工具的学习照着视频，步骤，会用就行。继续整理java面试大全里的题目，集合">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-27T12:02:08.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试">
+<meta name="twitter:description" content="java的学习包括原理学习和工具的学习。原理的学习需要理解，背诵。工具的学习照着视频，步骤，会用就行。继续整理java面试大全里的题目，集合">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/wanghang/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/27/14.java面试/"/>
+
+
+
+
+
+  <title>面试 | 汪汪的blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+	<a href="https://github.com/UntilHell"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/wanghang/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">汪汪的blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">汝之优秀，吾何时能及！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/wanghang/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/wanghang/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/wanghang/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/wanghang/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/27/14.java面试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蟑螂恶霸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/wanghang/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汪汪的blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T20:05:36+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,620
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>java的学习包括原理学习和工具的学习。原理的学习需要理解，背诵。工具的学习照着视频，步骤，会用就行。<br>继续整理java面试大全里的题目，集合<br><a id="more"></a></p>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><ol>
+<li><p>ArrayList和Vector的区别？</p>
+<p> 这两个类都实现了List接口(List接口实现collection接口)，都是有序集合，即存储在这两个集合中的元素位置都是有顺序的，相当于一种动态的数组，可以按照索引号取出某个元素，数据允许重复。</p>
+<p> 接着才说 ArrayList 与 Vector 的区别，这主要包括两个方面：</p>
+<p> (1) 同步性</p>
+<p> Vector 是线程安全的，也就是说是它的方法之间是线程同步的，而 ArrayList 是线程序不安全的， 它的方法之间是线程不同步的。 如果只有一个线程会访问到集合，那最好是使用ArrayList，因为它不考虑线程安全，效率会高些；如果有多个线程会访问到集合，那最好是使用Vector，因为不需要我们自己再去考虑和编写线程安全的代码。 </p>
+<p> (2) 数据增长</p>
+<p> Vector 增长原来的一倍，ArrayList 增加原来的 0.5 倍。</p>
+</li>
+<li><p>HashMap 和 Hashtable 的区别</p>
+<p> 就 HashMap 与 HashTable 主要从三方面来说。</p>
+<p> (1) 历史原因:Hashtable 是基于陈旧的 Dictionary 类的， HashMap 是 Java 1.2 引进的 Map 接口的一个实现</p>
+<p> (2)同步性:Hashtable 是线程安全的，也就是说是同步的，而 HashMap 是线程序不安全的，不是同步的</p>
+<p> (3)值：只有 HashMap 可以让你将空值作为一个表的条目的 key 或 value</p>
+</li>
+<li><p>List,Map,Set 三个接口，存取元素时，各有什么特点</p>
+</li>
+</ol>
+<p>List和set相似，都继承collection接口，存储单列元素。List可以出现重复元素,存储是有顺序的；set里面不予许出现重复元素，如果重复不会add进去。List可以根据索引取，Set不能。Set 取元素时，没法说取第几个，只能以Iterator接口取得所有的元素，再逐一遍历各个元素。  </p>
+<p>Map和List、Set不同。Map存储的是key-value，key不可以重复。根据key取得value，也可以取得所有的key或者value。还可以获得 key 和 value 组合成的 Map.Entry对象的集合。</p>
+<ol start="4">
+<li>说出 ArrayList,Vector, LinkedList 的存储性能和特性</li>
+</ol>
+<p>ArrayList 和 Vector 都是使用数组方式存储数据，此数组元素数大于实际存储的数据以便增加和插入元素，它们都允许直接按序号索引元素，但是插入元素要涉及数组元素移动等内存操作，所以索引数据快而插入数据慢，Vector 由于使用了 synchronized 方法（线程安全），通常性能上较 ArrayList 差，而 LinkedList 使用双向链表实现存储，按序号索引数据需要进行前向或后向遍历，但是插入数据时只需要记录本项的前后项即可，所以插入速度较快。</p>
+<p>LinkedList 也是线程不安全的， LinkedList 提供了一些方法，使得 LinkedList 可以被当作堆栈和队列来使用</p>
+<h1 id="FreeMarker"><a href="#FreeMarker" class="headerlink" title="FreeMarker"></a>FreeMarker</h1><p>FreeMarker是一个用Java语言编写的模板引擎，它基于模板来生成文本输出。FreeMarker与Web容器无关，即在Web运行时，它并不知道Servlet或HTTP。它不仅可以用作表现层的实现技术，而且还可以用于生成XML，JSP或Java 等。</p>
+<p>目前企业中:主要用Freemarker做静态页面或是页面展示</p>
+<p>将java中的数据放到html中，先建立一个模板，java对象写到html里面。</p>
+<h2 id="FreeMarker入门"><a href="#FreeMarker入门" class="headerlink" title="FreeMarker入门"></a>FreeMarker入门</h2><ol>
+<li><p>引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.23<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第一个测试例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFreemark</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFreemarker</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="comment">//使用步骤：</span></span><br><span class="line">        <span class="comment">//第一步：创建一个Configuration对象，直接new一个对象。构造方法的参数就是freemarker对于的版本号。</span></span><br><span class="line">        Configuration configuration = <span class="keyword">new</span> Configuration(Configuration.getVersion());                </span><br><span class="line">        <span class="comment">//第二步：设置模板文件所在的路径。</span></span><br><span class="line">        configuration.setDirectoryForTemplateLoading(<span class="keyword">new</span> File(<span class="string">"E:\\框架\\javaweb工程文件\\taotao-portal\\src\\main\\webapp\\WEB-INF\\ftl"</span>));</span><br><span class="line">        <span class="comment">//第三步：设置模板文件使用的字符集。一般就是utf-8.</span></span><br><span class="line">        configuration.setDefaultEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">//第四步：加载一个模板，创建一个模板对象。</span></span><br><span class="line">        Template template = configuration.getTemplate(<span class="string">"hello.ftl"</span>);</span><br><span class="line">        <span class="comment">//第五步：创建一个模板使用的数据集，可以是pojo也可以是map。一般是Map。</span></span><br><span class="line">        Map&lt;String,String&gt; dataModel = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">//放入数据</span></span><br><span class="line">        dataModel.put(<span class="string">"hello"</span>, <span class="string">"This is my first template"</span>);</span><br><span class="line">        <span class="comment">//第六步：创建一个Writer对象，一般创建一FileWriter对象，指定生成的文件名。</span></span><br><span class="line">        Writer out = <span class="keyword">new</span> FileWriter(<span class="keyword">new</span> File(<span class="string">"C:\\Users\\Administrator\\Desktop\\hello.html"</span>));     </span><br><span class="line">        <span class="comment">//第七步：调用模板对象的process方法输出文件。</span></span><br><span class="line">        template.process(dataModel, out);</span><br><span class="line">        <span class="comment">//第八步：关闭流。</span></span><br><span class="line">        out.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>模板</p>
+<p>${hello}</p>
+<h2 id="模板的使用"><a href="#模板的使用" class="headerlink" title="模板的使用"></a>模板的使用</h2><p>java中的配置很简单，现在的难点在模板语法的使用。</p>
+<h3 id="访问map中的value"><a href="#访问map中的value" class="headerlink" title="访问map中的value"></a>访问map中的value</h3><p>${key}</p>
+<h3 id="访问pojo中的属性"><a href="#访问pojo中的属性" class="headerlink" title="访问pojo中的属性"></a>访问pojo中的属性</h3><p>Student对象。学号、姓名、年龄</p>
+<p>${key.property}<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>$&#123;hello&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    取学生的信息：<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>学号：<span class="tag">&lt;/<span class="name">label</span>&gt;</span>$&#123;stu.id&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>姓名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span>$&#123;stu.name&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>年龄：<span class="tag">&lt;/<span class="name">label</span>&gt;</span>$&#123;stu.age&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map dataModel = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="comment">//放入数据</span></span><br><span class="line">Student stu = <span class="keyword">new</span> Student(<span class="number">210212</span>,<span class="string">"Kobe"</span>,<span class="number">21</span>);</span><br><span class="line">dataModel.put(<span class="string">"stu"</span>, stu);</span><br></pre></td></tr></table></figure>
+<h3 id="取集合中的数据"><a href="#取集合中的数据" class="headerlink" title="取集合中的数据"></a>取集合中的数据</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">studentList</span> <span class="attr">as</span> <span class="attr">student</span>&gt;</span></span><br><span class="line">$&#123;student.id&#125;/$&#123;studnet.name&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"></span><br><span class="line">循环使用格式:</span><br><span class="line"><span class="tag">&lt;<span class="name">#list</span> 要循环的数据 <span class="attr">as</span> 循环后的数据&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"></span><br><span class="line">下标</span><br><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">studentList</span> <span class="attr">as</span> <span class="attr">student</span>&gt;</span></span><br><span class="line">    $&#123;student_index&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>没有保存ftl文件，一直输出不了，真的是，妈卖批。</p>
+<p>判断：奇数黄色，偶数红色</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">stulist</span> <span class="attr">as</span> <span class="attr">student</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">#if</span> <span class="attr">student_index</span> % <span class="attr">2</span> ==<span class="string">0</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span> <span class="attr">bgcolor</span>=<span class="string">"blue"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">#else</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span> <span class="attr">bgcolor</span>=<span class="string">"red"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">#if</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;student_index&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;student.id&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;student.name&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;student.age&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="日期类型格式化"><a href="#日期类型格式化" class="headerlink" title="日期类型格式化"></a>日期类型格式化</h3><p>直接取值:${date}(date是属性名)如果传来的是一个Date型数据会报错</p>
+<p>${date?date} 2016-9-13</p>
+<p>${date?time} 17:53:55</p>
+<p>${date?datetime} 2016-9-13 17:53:55</p>
+<h3 id="Null值的处理"><a href="#Null值的处理" class="headerlink" title="Null值的处理"></a>Null值的处理</h3><p>如果直接取一个不存在的值(值为null)时会报异常</p>
+<p>${aaa}</p>
+<p>处理: ${aaa!”默认值”}或者${aaa! }代表空字符串</p>
+<h3 id="Include标签"><a href="#Include标签" class="headerlink" title="Include标签"></a>Include标签</h3><p>&lt;#include “模板名称”&gt;<br>(相当于jstl中的包含)</p>
+<h3 id="Spring中整合freeMarker"><a href="#Spring中整合freeMarker" class="headerlink" title="Spring中整合freeMarker"></a>Spring中整合freeMarker</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"freemarkerConfig"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"templateLoaderPath"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/ftl/"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/wanghang/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/wanghang/tags/集合/" rel="tag"># 集合</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/wanghang/2018/06/25/java面试5/" rel="next" title="面试5">
+                <i class="fa fa-chevron-left"></i> 面试5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">蟑螂恶霸</p>
+              <p class="site-description motion-element" itemprop="description">继续努力</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/wanghang/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/wanghang/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-number">1.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FreeMarker"><span class="nav-number">2.</span> <span class="nav-text">FreeMarker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FreeMarker入门"><span class="nav-number">2.1.</span> <span class="nav-text">FreeMarker入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的使用"><span class="nav-number">2.2.</span> <span class="nav-text">模板的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问map中的value"><span class="nav-number">2.2.1.</span> <span class="nav-text">访问map中的value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问pojo中的属性"><span class="nav-number">2.2.2.</span> <span class="nav-text">访问pojo中的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取集合中的数据"><span class="nav-number">2.2.3.</span> <span class="nav-text">取集合中的数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期类型格式化"><span class="nav-number">2.2.4.</span> <span class="nav-text">日期类型格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null值的处理"><span class="nav-number">2.2.5.</span> <span class="nav-text">Null值的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Include标签"><span class="nav-number">2.2.6.</span> <span class="nav-text">Include标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring中整合freeMarker"><span class="nav-number">2.2.7.</span> <span class="nav-text">Spring中整合freeMarker</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蟑螂恶霸</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共14.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/wanghang/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/wanghang/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/wanghang/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

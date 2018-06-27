@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="汪汪的blog">
 <meta property="og:description" content="看一下mysql，前面看的oracle较多，mysql里面的一些基本的操作没有掌握。连接、日期函数。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T11:03:53.980Z">
+<meta property="og:updated_time" content="2018-06-27T01:14:48.329Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql补漏与回顾">
 <meta name="twitter:description" content="看一下mysql，前面看的oracle较多，mysql里面的一些基本的操作没有掌握。连接、日期函数。">
@@ -354,12 +354,11 @@
 
       
         <p>看一下mysql，前面看的oracle较多，mysql里面的一些基本的操作没有掌握。连接、日期函数。<br><a id="more"></a></p>
-<p>#日期函数<br>select ename,data_format(hiredate,’%m-%d-%Y’) from emp;<br>将日期转换成对应的格式字符串</p>
+<h1 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h1><p>select ename,data_format(hiredate,’%m-%d-%Y’) from emp;<br>将日期转换成对应的格式字符串</p>
 <p>str_to_date<br>字符转日期</p>
 <p>分组函数自动忽略空值,不能使用在where中<br>count count(*) count(empno)<br>sum<br>avg<br>max<br>min</p>
 <p>分组函数不能使用在where中<br>select ename from emp where sal &gt; avg(sal);错误</p>
-<p>#分组查询</p>
-<ul>
+<h1 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h1><ul>
 <li>group by </li>
 <li>having<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    <span class="keyword">max</span>(sal)</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    emp</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    job</span><br><span class="line"></span><br><span class="line"><span class="comment">--job和max(sal)条数是相同的，故job可以放在前面，如果放ename就不行，没有意义。在mysql可以执行；而在oracle中不能执行，报错</span></span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">    job,<span class="keyword">max</span>(sal)</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    emp</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    job</span><br></pre></td></tr></table></figure>
 </li>
@@ -399,7 +398,7 @@
 <li><p>order by</p>
 </li>
 </ol>
-<p>#连接查询<br>查询的时候只从一张表中查询数据称为单表查询</p>
+<h1 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h1><p>查询的时候只从一张表中查询数据称为单表查询</p>
 <p>在实际的开发中，数据不是存储在一张表中的，是同时存在多张表中的，这些表与表之间存在关系，我们在检索的时候需要将多张表联合起来取得有效的数据，这种查询称为连接查询或者跨表查询。</p>
 <p>多表查询的时候需要给表起别名，效率高，可读性高。<br>两张表进行连接查询没有任何条件限制，查询结果会出现两张表记录的乘积，需要添加限制。不加约束条件，会有笛卡尔积。</p>
 <p>案例：查询每一个员工所在的部门名称<br>在连接查询的时候虽然使用限制条件，单数匹配的次数没有减少。只是查询的额都是有效记录。</p>
@@ -440,7 +439,7 @@
 <p><code>select ... from a join b on .. join c on ...;</code></p>
 <p>a和b连接，b和c连接</p>
 <p><code>select e.ename ,d.dname,s.grade from emp e join dept d on e.deptno = d.deptno join salgrade s on e.sal between s.losal and s.hisal;</code></p>
-<p>#子查询<br>select语句嵌套select语句。出现在select、from、where</p>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>select语句嵌套select语句。出现在select、from、where</p>
 <p><strong>案例：</strong>找出薪水比公司平均薪水高的员工，要求显示员工名和薪水。</p>
 <p><code>select ename,sal from emp where sal &gt; avg(sal);</code><br>错误分组函数不能放在where</p>
 <p><code>select ename,sal from emp where sal &gt;(select avg(sal) from emp);</code></p>
@@ -480,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/wanghang/2018/06/20/java面试4/" rel="next" title="管理系统部署到阿里云">
-                <i class="fa fa-chevron-left"></i> 管理系统部署到阿里云
+              <a href="/wanghang/2018/06/20/java面试4/" rel="next" title="面试4">
+                <i class="fa fa-chevron-left"></i> 面试4
               </a>
             
           </div>
@@ -490,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/wanghang/2018/06/24/java面试5/" rel="prev" title="面试4">
-                面试4 <i class="fa fa-chevron-right"></i>
+              <a href="/wanghang/2018/06/24/管理系统部署到阿里云/" rel="prev" title="管理系统部署到阿里云">
+                管理系统部署到阿里云 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,8 +581,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -598,7 +606,7 @@
               
                 <a href="/wanghang/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -611,7 +619,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/wanghang/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -634,6 +642,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#日期函数"><span class="nav-number">1.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组查询"><span class="nav-number">2.</span> <span class="nav-text">分组查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接查询"><span class="nav-number">3.</span> <span class="nav-text">连接查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子查询"><span class="nav-number">4.</span> <span class="nav-text">子查询</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -680,7 +704,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.0k字</span>
+  <span class="post-count">博客全站共14.6k字</span>
 </div>
         
 

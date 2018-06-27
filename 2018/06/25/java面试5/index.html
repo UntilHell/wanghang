@@ -82,14 +82,14 @@
 <meta name="description" content="今天项目终于在阿里云上面跑起来了，真的很棒。后面看了java的IO操作，排序算法(冒泡排序、插入排序、选择排序)，二分查找。">
 <meta name="keywords" content="阿里云部署,IO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试6">
-<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/25/java面试6/index.html">
+<meta property="og:title" content="面试5">
+<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/25/java面试5/index.html">
 <meta property="og:site_name" content="汪汪的blog">
 <meta property="og:description" content="今天项目终于在阿里云上面跑起来了，真的很棒。后面看了java的IO操作，排序算法(冒泡排序、插入排序、选择排序)，二分查找。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T14:00:32.837Z">
+<meta property="og:updated_time" content="2018-06-26T11:20:18.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试6">
+<meta name="twitter:title" content="面试5">
 <meta name="twitter:description" content="今天项目终于在阿里云上面跑起来了，真的很棒。后面看了java的IO操作，排序算法(冒泡排序、插入排序、选择排序)，二分查找。">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/25/java面试6/"/>
+  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/25/java面试5/"/>
 
 
 
 
 
-  <title>面试6 | 汪汪的blog</title>
+  <title>面试5 | 汪汪的blog</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/25/java面试6/">
+    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/25/java面试5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="蟑螂恶霸">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">面试6</h1>
+          <h1 class="post-title" itemprop="name headline">面试5</h1>
         
 
         <div class="post-meta">
@@ -316,7 +316,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,117
+                  1,112
                 </span>
               
 
@@ -360,7 +360,7 @@
 <p>JAVA_OPTS=”-Xms256m -Xmx512m -Xss1024K -XX:PermSize=128m -XX:MaxPermSize=256m”。</p>
 </blockquote>
 <p>终于正常了,很开心。good job !</p>
-<p>#文件操作<br>Java SE的四大核心知识点：面向对象、类集框架、Java IO、JDBC。</p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><p>Java SE的四大核心知识点：面向对象、类集框架、Java IO、JDBC。</p>
 <p>Java IO的核心就一句话解释：如果抽象类或接口之中的抽象方法被子类所覆写了，那么实例化这个子类的时候，所调用的方法一定是被覆写过的方法。</p>
 <p>所有的IO操作都在java.io包之中进行定义，而且整个java.io包实际上就是五个类和一个接口：</p>
 <ul>
@@ -369,8 +369,7 @@
 <li><p>一个接口：Serializable;</p>
 </li>
 </ul>
-<p>##文件操作类：File</p>
-<p>在整个java.io包之中，File类是唯一的一个与文件本身操作有关的类，所谓的文件本身指的是：文件的创建、删除、重命名、取得文件大小、修改日期。</p>
+<h2 id="文件操作类：File"><a href="#文件操作类：File" class="headerlink" title="文件操作类：File"></a>文件操作类：File</h2><p>在整个java.io包之中，File类是唯一的一个与文件本身操作有关的类，所谓的文件本身指的是：文件的创建、删除、重命名、取得文件大小、修改日期。</p>
 <p>如果要想使用File类操作文件的话，那么肯定要通过构造方法实例化File类对象，而实例化File类对象的过程之中主要使用以下构造方法：</p>
 <p>public File(String pathname);</p>
 <p>文件的基本操作有：</p>
@@ -400,8 +399,8 @@
 <li>文件的最后一次修改日期：public long lastModified()；</li>
 <li>取得文件大小：public long length()，是以字节为单位返回的。</li>
 </ul>
-<p><strong>一个简单的应用</strong></p>
-<p>列出一个文件夹下面的所以文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.wanghang.file;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileDemo2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"D:"</span>+File.separator+<span class="string">"社科类"</span>);<span class="comment">//文件的路径</span></span><br><span class="line">        <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">            File[] listFiles = file.listFiles();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; listFiles.length; i++) &#123;</span><br><span class="line">                System.out.println(listFiles[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>范例</strong> :列出一个文件夹下面的所以文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.wanghang.file;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileDemo2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"D:"</span>+File.separator+<span class="string">"社科类"</span>);<span class="comment">//文件的路径</span></span><br><span class="line">        <span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">            File[] listFiles = file.listFiles();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; listFiles.length; i++) &#123;</span><br><span class="line">                System.out.println(listFiles[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个只是列出了文件名，稍微做一些变化，可以列出文件夹下面的文件。</p>
 <p>现在希望可以将一个目录之中的全部文件都列出来，那么这种情况下只能采用递归：因为列出一个目录下的全部文件或文件夹之后，如果发现列出的内容是文件夹，则应该向后继续列出。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.wanghang.file;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileDemo3</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"D:"</span>+File.separator+<span class="string">"社科类"</span>);<span class="comment">//文件的路径</span></span><br><span class="line">        print(file);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(File file)</span> </span>&#123;      </span><br><span class="line">        <span class="keyword">if</span>(file.isDirectory())&#123; <span class="comment">//给出的路径是文件夹</span></span><br><span class="line">            File[] listFiles = file.listFiles();</span><br><span class="line">            <span class="keyword">if</span>(listFiles != <span class="keyword">null</span>)&#123; <span class="comment">//文件夹不为空</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; listFiles.length; i++) &#123;</span><br><span class="line">                    print(listFiles[i]);</span><br><span class="line">                &#125;               </span><br><span class="line">            &#125;           </span><br><span class="line">        &#125;       </span><br><span class="line">        System.out.println(file);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>高估了自己的耐心，每天瞎搞搞时间就完了。</p>
@@ -439,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/wanghang/2018/06/24/java面试5/" rel="next" title="面试4">
-                <i class="fa fa-chevron-left"></i> 面试4
+              <a href="/wanghang/2018/06/24/管理系统部署到阿里云/" rel="next" title="管理系统部署到阿里云">
+                <i class="fa fa-chevron-left"></i> 管理系统部署到阿里云
               </a>
             
           </div>
@@ -448,6 +447,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/wanghang/2018/06/27/14.java面试/" rel="prev" title="面试">
+                面试 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -562,7 +565,7 @@
               
                 <a href="/wanghang/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -575,7 +578,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/wanghang/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -608,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#调试商城项目"><span class="nav-number">1.</span> <span class="nav-text">调试商城项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#调试商城项目"><span class="nav-number">1.</span> <span class="nav-text">调试商城项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">2.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作类：File"><span class="nav-number">2.1.</span> <span class="nav-text">文件操作类：File</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -660,7 +663,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.0k字</span>
+  <span class="post-count">博客全站共14.6k字</span>
 </div>
         
 
