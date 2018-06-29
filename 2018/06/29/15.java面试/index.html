@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/wanghang/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/wanghang/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/wanghang/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/wanghang/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/wanghang/images/favicon32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/wanghang/images/favicon16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/wanghang/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spring,集合," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天学习效率很低，随便看了看，没有针对性">
+<meta name="keywords" content="Spring,集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合、链表、搜索服务">
+<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/29/15.java面试/index.html">
+<meta property="og:site_name" content="汪汪的blog">
+<meta property="og:description" content="今天学习效率很低，随便看了看，没有针对性">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-29T14:10:37.148Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="集合、链表、搜索服务">
+<meta name="twitter:description" content="今天学习效率很低，随便看了看，没有针对性">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/wanghang/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/29/15.java面试/"/>
+
+
+
+
+
+  <title>集合、链表、搜索服务 | 汪汪的blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+	<a href="https://github.com/UntilHell"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/wanghang/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">汪汪的blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">汝之优秀，吾何时能及！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/wanghang/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/wanghang/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/wanghang/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/wanghang/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/29/15.java面试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蟑螂恶霸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/wanghang/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汪汪的blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">集合、链表、搜索服务</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T22:11:27+08:00">
+                2018-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,218
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天学习效率很低，随便看了看，没有针对性<br><a id="more"></a></p>
+<ol>
+<li><p>集合的总结</p>
+<p> Collection(单列)</p>
+<pre><code>List(有序可重复)
+    ArrayList
+        底层结构是数组，查询快，增删慢；线程不安全，效率高
+    Vector
+        底层结构是数组，查询快，增删慢；线程安全，效率低
+    LinkedList
+        底层结构是链表，查询慢，增删快；线程不安全，效率高
+Set(无序，唯一)
+    HashSet
+        底层hash表
+        hash表依赖两个方法：hashcode()和equals()
+        执行顺序：
+            首先判断hashcode的值是否相同
+                是：继续执行equals()，返回值是true，说明其重复，不添加；返
+                    回值是false，添加
+                否：直接添加到集合
+        这里的hashcode和equals是否需要重写？什么时候重写
+        LinkedHashSet 
+            底层链表和hash表
+            链表保证有序
+            hash表保证唯一      
+    TreeSet   
+        底层红黑树，是一种自平衡的二叉树
+        如何保证元素的唯一性呢？
+            根据比较的返回值是否是0来决定
+        如何保证元素的排序呢？
+            两种方式
+                自然排序(元素具备比较性)
+                    让元素实现Comparable接口
+                比较器排序(集合具备比较性)   
+                    让集合接收一个comparable的实现类对象
+</code></pre></li>
+</ol>
+<pre><code>Map(双列集合)
+    集合的数据结构紧紧对键有效，与值无关
+    存储键值对，键唯一，值可重复
+    HashMap
+        底层hash表
+        hash表依赖两个方法：hashcode()和equals()
+        执行顺序：
+            首先判断hashcode的值是否相同
+                是：继续执行equals()，返回值是true，说明其重复，不添加；返
+                    回值是false，添加
+                否：直接添加到集合
+        这里的hashcode和equals是否需要重写？什么时候重写
+        LinkedHashMap
+            底层链表和hash表
+            链表保证有序
+            hash表保证唯一
+    HashTable
+        与HashMap的区别是线程是安全的
+</code></pre><ol start="2">
+<li>spring中，给class的property赋值对class中的属性名和xml里面的property name 的要求是什么？</li>
+</ol>
+<p>这里的调用有参构造</p>
+<p>属性注入的方式介绍（三种方式）<br>（1）使用set方法注入<br>（2）使用有参数构造注入<br>（3）使用接口注入</p>
+<p>在spring框架里面，支持前两种方式<br>（1）set方法注入（重点）<br>（2）有参数构造注入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HttpSolrServer</span><span class="params">(String baseURL)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(baseURL, <span class="keyword">null</span>, <span class="keyword">new</span> BinaryResponseParser());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 单机版的solrServer --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> =<span class="string">"solrServer"</span> <span class="attr">class</span>=<span class="string">"org.apache.solr.client.solrj.impl.HttpSolrServer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"baseURL"</span> <span class="attr">value</span>=<span class="string">"http://192.168.25.128:8080/solr"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>发布搜索服务</li>
+</ol>
+<p>传递过来一个查询条件，根据查询条件查询。返回查询结果。参数中包括分页<br>参数：</p>
+<p>string querySring</p>
+<p>int page</p>
+<p>int rows</p>
+<p>返回结果：返回json数据</p>
+<p>包含查询结果的列表，使用商品的pojo来描述来描述。SearchItem</p>
+<p>包含查询结果的总记录数</p>
+<p>查询结果的总页数</p>
+<p>当前的页码</p>
+<p>包含查询结果的状态</p>
+<p>包含错误信息</p>
+<p>创建一个SearchResult</p>
+<p>包含四个商品属性</p>
+<ol>
+<li><p>商品列表</p>
+</li>
+<li><p>查询结果总记录数</p>
+</li>
+<li><p>总页数</p>
+</li>
+<li><p>当前页</p>
+</li>
+<li><p>错误信息 </p>
+</li>
+</ol>
+<p>查询结构分页</p>
+<p>desc没有出现</p>
+<p>扫描service：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 扫描@service注解的类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.taotao.service"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这个会扫描到com.taotao.service.impl</p>
+<p>如果添加全部扫描，父子容器理解不清楚，可能会出现问题</p>
+<p>不建议大范围扫描</p>
+<p>拦截*.html的原因<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 扫描@service注解的类 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.taotao.search.service,com.taotao.search.dao"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>链表的由自身的数据和引用构成，在《算法4》中的表示方法。</p>
+<h2 id="构造链表与遍历链表"><a href="#构造链表与遍历链表" class="headerlink" title="构造链表与遍历链表"></a>构造链表与遍历链表</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> p4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkList</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Node first = <span class="keyword">new</span> Node();    </span><br><span class="line">        Node second = <span class="keyword">new</span> Node();   </span><br><span class="line">        Node third = <span class="keyword">new</span> Node();    </span><br><span class="line">        </span><br><span class="line">        first.data = <span class="string">"to"</span>;</span><br><span class="line">        second.data = <span class="string">"be"</span>;</span><br><span class="line">        third.data = <span class="string">"or"</span>;</span><br><span class="line">        </span><br><span class="line">        first.next = second;</span><br><span class="line">        second.next = third;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//链表的遍历，从头元素开始</span></span><br><span class="line">        <span class="keyword">for</span>(Node x = first; x !=<span class="keyword">null</span>; x = x.next)&#123;</span><br><span class="line">            System.out.println(x.data + <span class="string">","</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//节点</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//链表里的数</span></span><br><span class="line">    <span class="keyword">public</span> String data;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//链表里指向的下一个数</span></span><br><span class="line">    <span class="keyword">public</span> Node next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="在表头插入节点"><a href="#在表头插入节点" class="headerlink" title="在表头插入节点"></a>在表头插入节点</h2><p>例如在首节点插入”not”，首先将oldfirst = first，将一个新节点赋给first，value设置为”not”，next设置为oldfirst。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Node oldfirst = first;      </span><br><span class="line"><span class="comment">//在表头加入的元素，创建新的首节点，加入not</span></span><br><span class="line">first = <span class="keyword">new</span> Node();</span><br><span class="line">first.data = <span class="string">"not"</span>;</span><br><span class="line">first.next = oldfirst;</span><br></pre></td></tr></table></figure></p>
+<h2 id="表头删除节点"><a href="#表头删除节点" class="headerlink" title="表头删除节点"></a>表头删除节点</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除首节点</span></span><br><span class="line"> first = first.next;</span><br></pre></td></tr></table></figure>
+<h2 id="在表尾插入节点"><a href="#在表尾插入节点" class="headerlink" title="在表尾插入节点"></a>在表尾插入节点</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在尾部加入节点</span></span><br><span class="line">Node fouth = <span class="keyword">new</span> Node();</span><br><span class="line">fouth.data = <span class="string">"not"</span> ;</span><br><span class="line">third.next = fouth;</span><br></pre></td></tr></table></figure>
+<p>删除连标点额尾节点？last帮不上忙因为我们需要将尾节点的前一个节点的next改为null。唯一解决的办法是遍历整条链表并找出last节点。需要的时间和链表的长度成正比。实现任意插入和操作的标准使用双向链表。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/wanghang/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/wanghang/tags/集合/" rel="tag"># 集合</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/wanghang/2018/06/27/14.java面试/" rel="next" title="集合与FreeMarker">
+                <i class="fa fa-chevron-left"></i> 集合与FreeMarker
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">蟑螂恶霸</p>
+              <p class="site-description motion-element" itemprop="description">继续努力</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/wanghang/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/wanghang/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#链表"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造链表与遍历链表"><span class="nav-number">1.1.</span> <span class="nav-text">构造链表与遍历链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在表头插入节点"><span class="nav-number">1.2.</span> <span class="nav-text">在表头插入节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表头删除节点"><span class="nav-number">1.3.</span> <span class="nav-text">表头删除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在表尾插入节点"><span class="nav-number">1.4.</span> <span class="nav-text">在表尾插入节点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蟑螂恶霸</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共15.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/wanghang/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/wanghang/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/wanghang/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
