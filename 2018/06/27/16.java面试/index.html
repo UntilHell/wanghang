@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/wanghang/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/wanghang/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/wanghang/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/wanghang/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/wanghang/images/favicon32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/wanghang/images/favicon16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/wanghang/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="栈,FreeMarker,spring,hibernate,递归删除," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="两天的效率低，看了算法，难度很大，而且这是一门枯燥的课程。基本的数据结构有数组、链表、栈、队列。算法有排序、查找。排序里面又有冒泡、插入、选择、归并、希尔等。查找里面还没有看。">
+<meta name="keywords" content="栈,FreeMarker,spring,hibernate,递归删除">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018.6.30-7.1记录">
+<meta property="og:url" content="github.com:UntilHell/wanghang/2018/06/27/16.java面试/index.html">
+<meta property="og:site_name" content="汪汪的blog">
+<meta property="og:description" content="两天的效率低，看了算法，难度很大，而且这是一门枯燥的课程。基本的数据结构有数组、链表、栈、队列。算法有排序、查找。排序里面又有冒泡、插入、选择、归并、希尔等。查找里面还没有看。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-01T13:51:42.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018.6.30-7.1记录">
+<meta name="twitter:description" content="两天的效率低，看了算法，难度很大，而且这是一门枯燥的课程。基本的数据结构有数组、链表、栈、队列。算法有排序、查找。排序里面又有冒泡、插入、选择、归并、希尔等。查找里面还没有看。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/wanghang/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="github.com:UntilHell/wanghang/2018/06/27/16.java面试/"/>
+
+
+
+
+
+  <title>2018.6.30-7.1记录 | 汪汪的blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+	<a href="https://github.com/UntilHell"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/wanghang/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">汪汪的blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">汝之优秀，吾何时能及！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/wanghang/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/wanghang/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/wanghang/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/wanghang/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="github.com:UntilHell/wanghang/wanghang/2018/06/27/16.java面试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蟑螂恶霸">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/wanghang/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汪汪的blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018.6.30-7.1记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T09:15:35+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,408
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>两天的效率低，看了算法，难度很大，而且这是一门枯燥的课程。基本的数据结构有数组、链表、栈、队列。算法有排序、查找。排序里面又有冒泡、插入、选择、归并、希尔等。查找里面还没有看。<br><a id="more"></a></p>
+<ol>
+<li>栈</li>
+</ol>
+<p>Stack类的最后一句执行不了，应该是是陷入了死循环。Stack的size不能显示。</p>
+<ol start="2">
+<li><p>FreeMarker生成静态网页</p>
+<ol>
+<li>当用户第一次访问时生成静态文件，不推荐使用。</li>
+<li>当后台编辑、添加商城时生成。</li>
+</ol>
+</li>
+</ol>
+<p>taotao-portal的功能生成静态页面，发布服务</p>
+<p>Service:接收参数：商品id，获得商品数据(商品基本信息，描述，规格参数)</p>
+<ol start="3">
+<li>spring里面的几个注解@RequestParam()设置默认值</li>
+</ol>
+<p>@RequestMapping(“/base/{itemId}”)</p>
+<p>public TaotaoResult getItem(@PathVariable Long itemId){}</p>
+<p>jsp里面的images是数组，取回来的images是字符串，需要进行分割。这种操作是第一次见</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class PortalItem extends TbItem &#123;</span><br><span class="line">    public String[] getImages()&#123;</span><br><span class="line">        String images = this.getImage();</span><br><span class="line">        if(images !=null &amp;&amp; !images.equals(&quot;&quot;))&#123;</span><br><span class="line">            String[] imgs = images.split(&quot;,&quot;);</span><br><span class="line">            return imgs;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>响应的时候乱码，使用produces=MediaType.TEXT_HTML_VALUE+”;charset=utf-8”</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value=(&quot;/desc/&#123;itemId&#125;&quot;),produces=MediaType.TEXT_HTML_VALUE+&quot;;charset=utf-8&quot;)</span><br><span class="line"></span><br><span class="line">不需要加括号，加括号后itemiId娶不到</span><br><span class="line"></span><br><span class="line">@RequestMapping(value=&quot;/desc/&#123;itemId&#125;&quot;,produces=MediaType.TEXT_HTML_VALUE+&quot;;charset=utf-8&quot;)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>model.addAttribute(TaotaoResult.ok(item));</li>
+</ol>
+<p>一个model.add搞了个吧小时，这里写错了，首先不需要TaotaoResult.ok包装，这里是数据item在jsp中的显示item.title。</p>
+<p>model.addAttribute(“item”,item);</p>
+<ol start="6">
+<li>一个json的解析</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123;<span class="string">"group"</span>:<span class="string">"组名1"</span>,<span class="string">"params"</span>:[&#123;<span class="string">"k"</span>:<span class="string">"组员1"</span>,<span class="string">"v"</span>:<span class="string">"a"</span>&#125;,&#123;<span class="string">"k"</span>:<span class="string">"组员2"</span>,<span class="string">"v"</span>:<span class="string">"a"</span>&#125;]&#125;,</span><br><span class="line">	&#123;<span class="string">"group"</span>:<span class="string">"组名2"</span>,<span class="string">"params"</span>:[&#123;<span class="string">"k"</span>:<span class="string">"组员1"</span>,<span class="string">"v"</span>:<span class="string">"sd"</span>&#125;,&#123;<span class="string">"k"</span>:<span class="string">"组员2"</span>,<span class="string">"v"</span>:<span class="string">"ss"</span>&#125;]&#125;,</span><br><span class="line">	&#123;<span class="string">"group"</span>:<span class="string">"组名3"</span>,<span class="string">"params"</span>:[&#123;<span class="string">"k"</span>:<span class="string">"组员1"</span>,<span class="string">"v"</span>:<span class="string">"sd"</span>&#125;,&#123;<span class="string">"k"</span>:<span class="string">"组员2"</span>,<span class="string">"v"</span>:<span class="string">"sd"</span>&#125;,</span><br><span class="line">	&#123;<span class="string">"k"</span>:<span class="string">"组员3"</span>,<span class="string">"v"</span>:<span class="string">"sd"</span>&#125;,&#123;<span class="string">"k"</span>:<span class="string">"组员4"</span>,<span class="string">"v"</span>:<span class="string">"sda"</span>&#125;]&#125;</span><br><span class="line"></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>Java中实现对上面的json的解析，并且生成html。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Map&gt; jsonList = JsonUtils.jsonToList(paramData, Map.class);</span><br><span class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">sb.append(<span class="string">"&lt;table cellpadding=\"0\" cellspacing=\"1\" width=\"100%\" border=\"0\" class=\"Ptable\"&gt;\n"</span>);</span><br><span class="line">sb.append(<span class="string">"    &lt;tbody&gt;\n"</span>);</span><br><span class="line"><span class="keyword">for</span>(Map m1:jsonList) &#123;</span><br><span class="line">	sb.append(<span class="string">"        &lt;tr&gt;\n"</span>);</span><br><span class="line">	sb.append(<span class="string">"            &lt;th class=\"tdTitle\" colspan=\"2\"&gt;"</span>+m1.get(<span class="string">"group"</span>)+<span class="string">"&lt;/th&gt;\n"</span>);</span><br><span class="line">	sb.append(<span class="string">"        &lt;/tr&gt;\n"</span>);</span><br><span class="line">	List&lt;Map&gt; list2 = (List&lt;Map&gt;) m1.get(<span class="string">"params"</span>);</span><br><span class="line">	<span class="keyword">for</span>(Map m2:list2) &#123;</span><br><span class="line">		sb.append(<span class="string">"        &lt;tr&gt;\n"</span>);</span><br><span class="line">		sb.append(<span class="string">"            &lt;td class=\"tdTitle\"&gt;"</span>+m2.get(<span class="string">"k"</span>)+<span class="string">"&lt;/td&gt;\n"</span>);</span><br><span class="line">		sb.append(<span class="string">"            &lt;td&gt;"</span>+m2.get(<span class="string">"v"</span>)+<span class="string">"&lt;/td&gt;\n"</span>);</span><br><span class="line">		sb.append(<span class="string">"        &lt;/tr&gt;\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">sb.append(<span class="string">"    &lt;/tbody&gt;\n"</span>);</span><br><span class="line">sb.append(<span class="string">"&lt;/table&gt;"</span>);</span><br><span class="line"><span class="comment">//返回html片段</span></span><br><span class="line"><span class="keyword">return</span> sb.toString();</span><br></pre></td></tr></table></figure></p>
+<ol start="7">
+<li>hibernate主键的生成策略</li>
+</ol>
+<p>native，uuid，increment,indentity,sequence,assigned</p>
+<ol start="8">
+<li>Dept类的映射文件</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dept</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;User&gt; users = <span class="keyword">new</span> HashSet&lt;User&gt;(<span class="number">0</span>); <span class="comment">//部门与用户一对多</span></span><br><span class="line">    <span class="keyword">private</span> String deptName;<span class="comment">//部门名称</span></span><br><span class="line">    <span class="keyword">private</span> Dept parent;<span class="comment">// 父部门 自关联 一对多的关系</span></span><br><span class="line">    <span class="keyword">private</span> Integer state;<span class="comment">//部门状态，1代表启用，0代表停用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应的xml文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC </span></span><br><span class="line"><span class="meta">    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"cn.wanghang.domain"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Dept"</span> <span class="attr">table</span>=<span class="string">"DEPT_P"</span> <span class="attr">dynamic-insert</span>=<span class="string">"true"</span> <span class="attr">dynamic-update</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">column</span>=<span class="string">"DEPT_ID"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--hibernate主键生成策略：native, increment,sequence,uuid,assigned,identity  --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"uuid"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"deptName"</span> <span class="attr">column</span>=<span class="string">"DEPT_NAME"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"state"</span> <span class="attr">column</span>=<span class="string">"STATE"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span>       </span><br><span class="line">        <span class="comment">&lt;!-- private Dept parent;//  部门对父部门  多对一，自关联 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"parent"</span> <span class="attr">class</span>=<span class="string">"Dept"</span> <span class="attr">column</span>=<span class="string">"PARENT_ID"</span> &gt;</span><span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span>       </span><br><span class="line">        <span class="comment">&lt;!-- private Set&lt;User&gt; users = new HashSet&lt;User&gt;(0); //部门与用户一对多 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"users"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"DEPT_ID"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"User"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span>       </span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>xx对xx是以当前的class为前面的，子部门与父部门，多对一，many-to-one，class，column。部门与用户一对多，set里面的key，one-to-many。</p>
+<ol start="9">
+<li>递归删除</li>
+</ol>
+<p>批量删除的时候前端传回来的id是数组，String类型”, “分割(逗号+空格)的数组，Integer Float等只会取最后面的值，其他的值取不到。才用String类型后面的分割方便。用的最多。前台传到后台的怎么判断是String或者Integer。在Spring中也是使用数组接收。</p>
+<p>Struts中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    String ids[] = model.getId().split(<span class="string">", "</span>);<span class="comment">//模型驱动取到</span></span><br><span class="line">    deptService.delete(Dept.class, ids);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"alist"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"$&#123;dept.id &#125;"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里的checkbox是一个数组，name是id</p>
+<p>Service中的实现</p>
+<p>判断是否存在子部门，有，调用自身；多个删除，需要一个一个删除，这里不知道能不能优化。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteById</span><span class="params">(Class&lt;Dept&gt; entityClass, Serializable id)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//有哪些子部门，他们的父部门为parentid</span></span><br><span class="line">    <span class="comment">//查询当前父部门下的子部门，有子部门调用自身</span></span><br><span class="line">    String hql = <span class="string">"from Dept where parent.id=?"</span>;</span><br><span class="line">    List&lt;Dept&gt; list = baseDao.find(hql, Dept.class, <span class="keyword">new</span> Object[]&#123;id&#125;); <span class="comment">//</span></span><br><span class="line">    <span class="keyword">if</span>(list !=<span class="keyword">null</span> &amp;&amp; list.size() &gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span> (Dept dept : list) &#123;</span><br><span class="line">            deleteById(Dept.class,dept.getId()); <span class="comment">//递归调用，调用自身</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    baseDao.deleteById(entityClass, id); <span class="comment">//删除父部门</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Class&lt;Dept&gt; entityClass, Serializable[] ids)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (Serializable id : ids) &#123;</span><br><span class="line">        <span class="keyword">this</span>.deleteById(Dept.class, id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>SpringMvc中的操作</p>
+<p>使用数组接收，在进行分割</p>
+<ol start="10">
+<li>刚才看了一些js代码，jq的选择器选择复选框。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>input复选2组：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox2"</span> <span class="attr">value</span>=<span class="string">"checkbox复选1"</span>/&gt;</span>checkbox复选1</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox2"</span> <span class="attr">value</span>=<span class="string">"checkbox复选2"</span> <span class="attr">checked</span>=<span class="string">"checked"</span>/&gt;</span>checkbox复选2</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"checkbox2"</span> <span class="attr">value</span>=<span class="string">"checkbox复选3"</span> <span class="attr">checked</span>=<span class="string">"checked"</span>/&gt;</span>checkbox复选3</span><br></pre></td></tr></table></figure>
+<p>js中的一些操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"input[name='checkbox2']:checked"</span>).val();<span class="comment">//选中项的第一个值</span></span><br><span class="line">$(<span class="string">"input[name='checkbox2']:checked"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">"checkbox2组选中项的值："</span>+$(<span class="keyword">this</span>).val());<span class="comment">//遍历选中项的值</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> index1 = $(<span class="string">"input[name='checkbox2']:checked"</span>).index();<span class="comment">//选中项的第一个序号</span></span><br><span class="line">alert(<span class="string">"checkbox2组选中项的项："</span>+index1);</span><br><span class="line">$(<span class="string">"input[name='checkbox2']:checked"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">//遍历选中项的序号</span></span><br><span class="line">  alert(<span class="string">"checkbox2组选中项的项："</span>+$(<span class="keyword">this</span>).index());<span class="comment">//遍历选中项的索引</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/wanghang/tags/栈/" rel="tag"># 栈</a>
+          
+            <a href="/wanghang/tags/FreeMarker/" rel="tag"># FreeMarker</a>
+          
+            <a href="/wanghang/tags/spring/" rel="tag"># spring</a>
+          
+            <a href="/wanghang/tags/hibernate/" rel="tag"># hibernate</a>
+          
+            <a href="/wanghang/tags/递归删除/" rel="tag"># 递归删除</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/wanghang/2018/06/25/java面试5/" rel="next" title="面试5">
+                <i class="fa fa-chevron-left"></i> 面试5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/wanghang/2018/06/27/14.java面试/" rel="prev" title="集合与FreeMarker">
+                集合与FreeMarker <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">蟑螂恶霸</p>
+              <p class="site-description motion-element" itemprop="description">继续努力</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/wanghang/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/wanghang/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蟑螂恶霸</span>
+
+  
+</div>
+
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <!--<div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共17.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/wanghang/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/wanghang/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/wanghang/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/wanghang/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/wanghang/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

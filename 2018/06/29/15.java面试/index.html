@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="汪汪的blog">
 <meta property="og:description" content="今天学习效率很低，随便看了看，没有针对性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T14:10:37.148Z">
+<meta property="og:updated_time" content="2018-06-30T00:37:49.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集合、链表、搜索服务">
 <meta name="twitter:description" content="今天学习效率很低，随便看了看，没有针对性">
@@ -316,7 +316,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,218
+                  1,216
                 </span>
               
 
@@ -354,9 +354,7 @@
 
       
         <p>今天学习效率很低，随便看了看，没有针对性<br><a id="more"></a></p>
-<ol>
-<li><p>集合的总结</p>
-<p> Collection(单列)</p>
+<h1 id="集合的总结"><a href="#集合的总结" class="headerlink" title="集合的总结"></a>集合的总结</h1><p>Collection(单列)</p>
 <pre><code>List(有序可重复)
     ArrayList
         底层结构是数组，查询快，增删慢；线程不安全，效率高
@@ -388,38 +386,31 @@ Set(无序，唯一)
                     让元素实现Comparable接口
                 比较器排序(集合具备比较性)   
                     让集合接收一个comparable的实现类对象
-</code></pre></li>
-</ol>
-<pre><code>Map(双列集合)
-    集合的数据结构紧紧对键有效，与值无关
-    存储键值对，键唯一，值可重复
-    HashMap
-        底层hash表
-        hash表依赖两个方法：hashcode()和equals()
-        执行顺序：
-            首先判断hashcode的值是否相同
-                是：继续执行equals()，返回值是true，说明其重复，不添加；返
-                    回值是false，添加
-                否：直接添加到集合
-        这里的hashcode和equals是否需要重写？什么时候重写
-        LinkedHashMap
-            底层链表和hash表
-            链表保证有序
-            hash表保证唯一
-    HashTable
-        与HashMap的区别是线程是安全的
-</code></pre><ol start="2">
-<li>spring中，给class的property赋值对class中的属性名和xml里面的property name 的要求是什么？</li>
-</ol>
+</code></pre><p>Map(双列集合)</p>
+<pre><code>集合的数据结构紧紧对键有效，与值无关
+存储键值对，键唯一，值可重复
+HashMap
+    底层hash表
+    hash表依赖两个方法：hashcode()和equals()
+    执行顺序：
+        首先判断hashcode的值是否相同
+            是：继续执行equals()，返回值是true，说明其重复，不添加；返
+                回值是false，添加
+            否：直接添加到集合
+    这里的hashcode和equals是否需要重写？什么时候重写
+    LinkedHashMap
+        底层链表和hash表
+        链表保证有序
+        hash表保证唯一
+HashTable
+    与HashMap的区别是线程是安全的
+</code></pre><h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><p> spring中，给class的property赋值对class中的属性名和xml里面的property name 的要求是什么？</p>
 <p>这里的调用有参构造</p>
 <p>属性注入的方式介绍（三种方式）<br>（1）使用set方法注入<br>（2）使用有参数构造注入<br>（3）使用接口注入</p>
 <p>在spring框架里面，支持前两种方式<br>（1）set方法注入（重点）<br>（2）有参数构造注入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HttpSolrServer</span><span class="params">(String baseURL)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(baseURL, <span class="keyword">null</span>, <span class="keyword">new</span> BinaryResponseParser());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 单机版的solrServer --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> =<span class="string">"solrServer"</span> <span class="attr">class</span>=<span class="string">"org.apache.solr.client.solrj.impl.HttpSolrServer"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"baseURL"</span> <span class="attr">value</span>=<span class="string">"http://192.168.25.128:8080/solr"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>发布搜索服务</li>
-</ol>
-<p>传递过来一个查询条件，根据查询条件查询。返回查询结果。参数中包括分页<br>参数：</p>
+<h1 id="发布搜索服务"><a href="#发布搜索服务" class="headerlink" title="发布搜索服务"></a>发布搜索服务</h1><p>传递过来一个查询条件，根据查询条件查询。返回查询结果。参数中包括分页<br>参数：</p>
 <p>string querySring</p>
 <p>int page</p>
 <p>int rows</p>
@@ -612,7 +603,7 @@ Set(无序，唯一)
               
                 <a href="/wanghang/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +616,7 @@ Set(无序，唯一)
               
               <div class="site-state-item site-state-tags">
                 <a href="/wanghang/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -658,7 +649,7 @@ Set(无序，唯一)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#链表"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造链表与遍历链表"><span class="nav-number">1.1.</span> <span class="nav-text">构造链表与遍历链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在表头插入节点"><span class="nav-number">1.2.</span> <span class="nav-text">在表头插入节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表头删除节点"><span class="nav-number">1.3.</span> <span class="nav-text">表头删除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在表尾插入节点"><span class="nav-number">1.4.</span> <span class="nav-text">在表尾插入节点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合的总结"><span class="nav-number">1.</span> <span class="nav-text">集合的总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring"><span class="nav-number">2.</span> <span class="nav-text">Spring</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布搜索服务"><span class="nav-number">3.</span> <span class="nav-text">发布搜索服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链表"><span class="nav-number">4.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造链表与遍历链表"><span class="nav-number">4.1.</span> <span class="nav-text">构造链表与遍历链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在表头插入节点"><span class="nav-number">4.2.</span> <span class="nav-text">在表头插入节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表头删除节点"><span class="nav-number">4.3.</span> <span class="nav-text">表头删除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在表尾插入节点"><span class="nav-number">4.4.</span> <span class="nav-text">在表尾插入节点</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -710,7 +701,7 @@ Set(无序，唯一)
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共15.8k字</span>
+  <span class="post-count">博客全站共17.2k字</span>
 </div>
         
 
